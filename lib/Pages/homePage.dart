@@ -1,3 +1,4 @@
+import 'package:expenses/Stub/transactions_data.dart';
 import 'package:flutter/material.dart';
 
 import '../Widgets/summary_tile.dart';
@@ -11,9 +12,15 @@ class HomePage extends StatelessWidget {
     Navigator.of(context).pushNamed(NewTransactionPage.ROUTE);
   }
 
+  var transactions = Stub.transactions;
+
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
+    transactions.sort((x, y) => y.transactionDate.compareTo(x.transactionDate));
+
+    const tiles = ['Today', 'This Week', 'This Month'];
+
     return Scaffold(
         appBar: AppBar(
           title: const Text('Expenses'),
@@ -24,14 +31,21 @@ class HomePage extends StatelessWidget {
               margin: EdgeInsets.all(5),
               padding: EdgeInsets.all(10),
               height: mediaQuery.size.height * 0.22,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [SummaryTile('TODAY'), SummaryTile('THIS WEEK')],
+              child:  GridView.builder(
+                physics: const NeverScrollableScrollPhysics(), // to disable scrolling :)
+                gridDelegate:  SliverGridDelegateWithMaxCrossAxisExtent(maxCrossAxisExtent: 120,
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10,
+                childAspectRatio: 1),
+                 itemBuilder: (c, i) {
+                   return SummaryTile(tiles[i]);
+                 }, 
+                 itemCount: 3,)
               ),
-            ),
+            
             Container(
                 height: mediaQuery.size.height * 0.58,
-                child: TransactionsList()),
+                child: TransactionsList(itemSource: transactions)),
           ],
         ),
         floatingActionButton: FloatingActionButton.extended(

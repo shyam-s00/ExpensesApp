@@ -1,11 +1,23 @@
 import 'package:flutter/foundation.dart';
 
+enum ProductCategory {
+  Grocery,
+  FoodAndBreverage,
+  Apparel,
+  Mobile,
+  Electornics,
+  HouseHold,
+  Kitchen,
+  ComputerAccessories
+
+}
+
 class TransactionModel {
   int id;
   String productName;
   DateTime transactionDate;
   double price;
-  String category;
+  ProductCategory category;
 
   TransactionModel(
       {@required this.id,

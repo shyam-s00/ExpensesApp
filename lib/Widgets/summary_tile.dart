@@ -12,8 +12,6 @@ class SummaryTile extends StatelessWidget {
       borderRadius: BorderRadius.circular(5),
       splashColor: Theme.of(context).primaryColor,
       child: Container(
-        width: 125,
-        height: 125,
         padding: EdgeInsets.all(5),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5),
