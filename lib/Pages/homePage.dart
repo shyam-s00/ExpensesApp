@@ -1,3 +1,4 @@
+import 'package:expenses/Models/transaction.dart';
 import 'package:expenses/Stub/transactions_data.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +13,7 @@ class HomePage extends StatelessWidget {
     Navigator.of(context).pushNamed(NewTransactionPage.ROUTE);
   }
 
-  var transactions = Stub.transactions;
+  final List<TransactionModel> transactions = Stub.transactions;
 
   @override
   Widget build(BuildContext context) {
