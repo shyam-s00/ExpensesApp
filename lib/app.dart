@@ -1,4 +1,5 @@
 import 'package:expenses/Blocs/load_transactions_bloc.dart';
+import 'package:expenses/Pages/transactions_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -15,6 +16,7 @@ class App extends StatelessWidget {
         routes: {
           HomePage.ROUTE: (_) => HomePage(),
           NewTransactionPage.ROUTE: (_) => NewTransactionPage(),
+          TransactionsPage.ROUTE: (_) => TransactionsPage(),
         },
       ),
     );
